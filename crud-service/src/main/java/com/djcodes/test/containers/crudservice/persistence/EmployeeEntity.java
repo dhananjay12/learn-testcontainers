@@ -1,68 +1,43 @@
 package com.djcodes.test.containers.crudservice.persistence;
 
+import java.util.Calendar;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "employee")
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "EMPLOYEE")
 public class EmployeeEntity {
 
-    public Double salary;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
+    private Integer id;
+
+    @Column(name = "FIRST_NAME")
     private String fname;
+
+    @Column(name ="LAST_NAME")
     private String lname;
 
-    public EmployeeEntity(Long id, String fname, String lname, Double salary) {
-        this.salary = salary;
-        this.id = id;
-        this.fname = fname;
-        this.lname = lname;
-    }
+    @Column(name ="EMAIL")
+    private String email;
 
-    public Double getSalary() {
-        return salary;
-    }
+    @Column(name ="DOB")
+    @Temporal(TemporalType.DATE)
+    Calendar dob;
 
-    public void setSalary(Double salary) {
-        this.salary = salary;
-    }
-
-    public String getFname() {
-        return fname;
-    }
-
-    public void setFname(String fname) {
-        this.fname = fname;
-    }
-
-    public String getLname() {
-        return lname;
-    }
-
-    public void setLname(String lname) {
-        this.lname = lname;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    @Override
-    public String toString() {
-        return "Employee{" +
-            "id=" + id +
-            ", fname='" + fname + '\'' +
-            ", lname='" + lname + '\'' +
-            ", salary=" + salary +
-            '}';
-    }
 }

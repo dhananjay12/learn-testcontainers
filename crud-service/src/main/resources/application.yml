@@ -8,13 +8,13 @@ spring:
 spring:
   profiles: mariadb
   datasource:
-    url: jdbc:mariadb://localhost:3306/dating?useUnicode=yes&characterEncoding=UTF-8&serverTimezone=UTC
+    url: jdbc:mariadb://localhost:3306/test?useUnicode=yes&characterEncoding=UTF-8&serverTimezone=UTC
     username: backend
     password: password
     driver-class-name: org.mariadb.jdbc.Driver
   jpa:
     database-platform: org.hibernate.dialect.MySQLInnoDBDialect
-    database: mariadb
+    # database: mariadb ## Not required
     openInView: false
     show_sql: true
     generate-ddl: true
